@@ -2,7 +2,7 @@ name: Reusable Workflow
 on:
   workflow_call:
     inputs:
-      node:
+      node-version:
         required: true
         type: string
 jobs:
@@ -11,9 +11,9 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [ ubuntu-latest, windows-latest ]
+        os: [ ubuntu-latest ]
     steps:
       - uses: actions/checkout@v4
       - name: Output Node Information
         run: |
-          echo ${{ inputs.node }}
+          echo 'This is version: ${{ inputs.node-version }}'

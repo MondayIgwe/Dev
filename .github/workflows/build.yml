@@ -62,3 +62,5 @@ jobs:
         run: |
           echo "random_number=$(($RANDOM % 2))" >> GITHUB_OUTPUT
           echo "Hi ${{ env.website }}"
+          echo ${{ runner.os }}
+          echo ${{ secret.PASSCODE}}

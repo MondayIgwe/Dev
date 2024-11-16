@@ -17,14 +17,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
-      max-parallel: 3
+      max-parallel: 1
       matrix:
         run: [ 'list order related', 'configure printer', 'manage label' ]
-        os: [ ubuntu-latest ]
+        os: [ ubuntu-latest, windows-latest ]
 
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         continue-on-error: true
@@ -35,15 +34,15 @@ jobs:
 
       - name: Run List Order Test
         run: |
-          echo '["${{matrix.run}}" == 'list order related']'
+          echo '[${{matrix.run}} == 'list order related']'
 
       - name: Run Printer Test
         run: |
-          echo '["${{matrix.run}}" == 'configure printer']'
+          echo '[${{matrix.run}} == 'configure printer']'
 
       - name: Run List Manage Label Test
         run: |
-          echo '["${{matrix.run}}" == 'manage label']'
+          echo '[${{matrix.run}} == 'manage label']'
 
       - name: Build with Maven
         run: |
@@ -68,7 +67,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [ ubuntu-latest ]
+        os: [ ubuntu-latest, windows-latest ]
+        node-version: [ 8 ]
     steps:
       - name: Generate numbers
         id: generate_number
@@ -76,4 +76,9 @@ jobs:
           echo "random_number=$(($RANDOM % 2))" >> GITHUB_OUTPUT
           echo "Hi ${{ env.website }}"
           echo ${{ runner.os }}
-          echo ${{ secrets.PASSCODE}}
+          echo ${{ secrets.PASSCODE }}
+
+  call-reusable-workflow:
+    uses: ./.github/workflows/reuseable-workflow.yml
+    with:
+      node: ${{ matrix.node-version }}

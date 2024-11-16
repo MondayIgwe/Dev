@@ -1,0 +1,19 @@
+name: Reusable Workflow
+on:
+  workflow_call:
+    inputs:
+      node:
+        required: true
+        type: string
+jobs:
+  reuse-me:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Output Node Information
+        run: |
+          echo ${{ inputs.node }}

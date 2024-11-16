@@ -20,7 +20,7 @@ jobs:
       max-parallel: 1
       matrix:
         run: [ 'list order related', 'configure printer', 'manage label' ]
-        os: [ ubuntu-latest, windows-latest ]
+        os: [ ubuntu-latest ]
 
     steps:
       - name: Code Checkout

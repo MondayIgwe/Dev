@@ -35,15 +35,15 @@ jobs:
 
       - name: Run List Order Test
         run: |
-          echo '["${{matrix.run}}" = 'list order related']'
+          echo '["${{matrix.run}}" == 'list order related']'
 
       - name: Run Printer Test
         run: |
-          echo '["${{matrix.run}}" = 'configure printer']'
+          echo '["${{matrix.run}}" == 'configure printer']'
 
       - name: Run List Manage Label Test
         run: |
-          echo '["${{matrix.run}}" = 'manage label']'
+          echo '["${{matrix.run}}" == 'manage label']'
 
       - name: Build with Maven
         run: |

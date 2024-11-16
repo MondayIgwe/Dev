@@ -49,14 +49,16 @@ jobs:
 
 
   random-job:
+    needs:
+      - build
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: true
       matrix:
-        os: [ ubuntu ]
+        os: [ ubuntu-latest ]
     steps:
       - name: Generate numbers
         id: generate_number
         run: |
           echo "random_number=$(($RANDOM % 2))" >> GITHUB_OUTPUT
-          echo "${{ env.website }}"
+          echo "Hi ${{ env.website }}"

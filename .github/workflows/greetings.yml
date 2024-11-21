@@ -1,6 +1,13 @@
 name: Greetings
 
-on: [ pull_request_target, issues ]
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'some thing greater than'
+        default: true
+        required: true
+        type: boolean
 
 jobs:
   greeting:

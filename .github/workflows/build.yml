@@ -72,6 +72,8 @@ jobs:
           echo "Hi ${{ env.website }}"
           echo ${{ runner.os }}
           echo ${{ secrets.PASSCODE }}
+          echo "::set-env=name=firstname::ifeanyi"
+          echo "${{ env.firstname }}"
 
   call-reusable-workflow:
     uses: ./.github/workflows/reusable-workflow.yml

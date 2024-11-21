@@ -10,6 +10,9 @@ on:
 env:
   firstname: 'sam'
   website: 'https://int-2.bmw.co.za'
+  node-version: |
+    8
+    10
 
 jobs:
   build:
@@ -81,4 +84,4 @@ jobs:
   call-reusable-workflow:
     uses: ./.github/workflows/reusable-workflow.yml
     with:
-      node-version: ${{ matrix.node-version }}
+      node-version: ${{ env.node-version }}

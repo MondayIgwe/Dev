@@ -24,8 +24,5 @@ jobs:
           issue-message: "Message that will be displayed on users' first issue"
           pr-message: "Message that will be displayed on users' first pull request"
 
-      - name: Setup Java JDK
-        uses: actions/setup-java@v4.5.0
-
       - run: |
           echo "Hello, ${{ github.actor }}"

@@ -24,14 +24,12 @@ jobs:
           issue-message: "Message that will be displayed on users' first issue"
           pr-message: "Message that will be displayed on users' first pull request"
 
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.4.3
-        with:
-          path: ${{ env.filepath }}
-
       - name: Setup Java JDK
         uses: actions/setup-java@v4.5.0
 
       - run: |
           echo "Hello, ${{ github.actor }}"
-          echo "Hello, ${{ github.repository }}"
+          echo "Hello, ${{ GITHUB_WORKFLOW }}"
+          echo "Hello, ${{ GITHUB_RUN_ID }}"
+          echo "Hello, ${{ GITHUB_REPOSITORY }}"
+          echo "Hello, ${{ GITHUB_API_URL }}"

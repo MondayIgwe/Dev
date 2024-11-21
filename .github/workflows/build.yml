@@ -74,6 +74,8 @@ jobs:
           echo ${{ secrets.PASSCODE }}
           echo "::set-env=name=firstname::ifeanyi"
           echo "${{ env.firstname }}"
+          echo ${{ secrets.MY_SECRET_NAME }}
+          echo ${{ GITHUB_TOKEN }}
 
   call-reusable-workflow:
     uses: ./.github/workflows/reusable-workflow.yml

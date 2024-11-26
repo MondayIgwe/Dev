@@ -13,6 +13,5 @@ jobs:
         node-version: [ 8 ]
     steps:
       - name: Run Test
-        uses: https://github.com/MondayIgwe/Dev/tree/main/.github/workflows/reusable-workflow.yml
-        with:
-          node-version: ${{ matrix.node-version }}
+        run: |
+          echo 'This is version: ${{ matrix.node-version }}'

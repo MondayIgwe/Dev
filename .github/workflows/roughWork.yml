@@ -13,6 +13,6 @@ jobs:
         node-version: [ 8 ]
     steps:
       - name: Run Test
-        uses: ./.github/workflows/reusable-workflow.yml
+        uses: Dev/tree/main/.github/workflows/reusable-workflow.yml
         with:
           node-version: ${{ matrix.node-version }}

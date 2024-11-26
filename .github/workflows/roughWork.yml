@@ -1,14 +1,16 @@
 on:
   workflow_dispatch:
-    - cron: '* * * * *'
 jobs:
-  set-1:
+  set-build:
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         prod: [ set-1, set-2, set-3, set-4, set-5 ]
         level: [ dev, staging, production ]
-    uses: ./.github/workflows/reusable-workflow.yml
-    secrets: inherit
-    with:
-      node-version: 8
-
+        os: [ ubuntu-latest ]
+        node-version: [ 8 ]
+    steps:
+      - name: create
+        uses: ./.github/workflows/reusable-workflow.yml
+        with:
+          node-version: ${{ matrix.node-version }}

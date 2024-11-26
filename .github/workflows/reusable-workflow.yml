@@ -16,4 +16,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: Output Node Information
         run: |
-          echo 'This is version: ${{ inputs.node-version }}'
+          echo 'This is version: ${{ matrix.node-version }}'

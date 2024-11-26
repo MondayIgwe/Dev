@@ -1,17 +1,18 @@
 name: Rough Worker
 on:
   workflow_dispatch:
+
 jobs:
   set-build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        prod: [ set-1, set-2, set-3, set-4, set-5 ]
-        level: [ dev, staging, production ]
+        prod: [ test-set-1, test-set-2, test-set-3 ]
+        level: [ int-1, int-2, pre-prod ]
         os: [ ubuntu-latest ]
         node-version: [ 8 ]
     steps:
-      - name: create
+      - name: Run Test
         uses: ./.github/workflows/reusable-workflow.yml
         with:
           node-version: ${{ matrix.node-version }}

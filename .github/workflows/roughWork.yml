@@ -1,3 +1,4 @@
+name: Rough Worker
 on:
   workflow_dispatch:
 jobs:
